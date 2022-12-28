@@ -1,6 +1,6 @@
-# Extension
-extension/node_modules
-extension/src/build
+# Thunderbird Extension
+thunderbird/node_modules
+thunderbird/src/build
 
 #Server
 server/node_modules
