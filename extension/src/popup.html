@@ -4,10 +4,31 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="popup.css" type="text/css">
 	<title>Compose Popup | SpamTester</title>
 </head>
 <body>
-	<div id="score">6 / 10</div>
+	<div class="header">
+		<img src="icons/logo.png" alt="SpamTester Logo" class="logo">
+		<h1 class="title">SpamTester</h1>
+	</div>
+	<div id="content">
+		<div id="loading-box">
+			<svg class="loading-icon"><use xlink:href="icons/spinner.svg#icon"></use></svg>
+		</div>
+		<div id="score-box" class="score-box">
+			<p id="score" class="score"><!-- From Javascript --></p>
+			<p id="message"><!-- From Javascript --></p>
+		</div>
+		<button id="show-details">
+			<svg class="show-details-icon"><use xlink:href="icons/arrow.svg#icon"></use></svg>
+			<span class="show-details-text">Show Details</span>
+			<svg class="show-details-icon"><use xlink:href="icons/arrow.svg#icon"></use></svg>
+		</button>
+		<div id="details-box">
+
+		</div>
+	</div>
 	<script type="text/javascript" src="build/popup.js"></script>
 </body>
 

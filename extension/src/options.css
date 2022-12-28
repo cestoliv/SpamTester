@@ -1,0 +1,43 @@
+body {
+	background: #23222b;
+	color: #fff;
+	padding: 20px 5px;
+	min-height: 100vh;
+}
+
+a {
+	color: #45a1ff;
+}
+
+.server-label {
+	font-weight: bold;
+	font-size: 1em;
+	margin-right: 10px;
+}
+
+input {
+	background: #2a2a2e;
+	border: 1px solid #2a2a2e;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+button {
+	background: #45a1ff;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: none;
+	font-weight: bold;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background 0.2s ease-in-out;
+}
+button:hover {
+	background: #383840;
+}
+
+.save-button {
+	margin-top: 10px;
+}
