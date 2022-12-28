@@ -1,0 +1,6 @@
+# Extension
+extension/node_modules
+extension/src/build
+
+#Server
+server/node_modules
