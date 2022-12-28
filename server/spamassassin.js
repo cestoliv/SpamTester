@@ -11,8 +11,9 @@ function parseOutput(output) {
 	return {
 		is_spam: status === 'Yes',
 		score: 10 - parseFloat(score),
-		required: parseFloat(required),
-		tests: tests.split(',').map((test) => {
+		maximum_score: 10,
+		required_score: parseFloat(required),
+		errors: tests.split(',').map((test) => {
 			const extractErrors = output.match(new RegExp(`^(.+?) ${test} +([\\s\\S]+?)(\\n(?!  ))`, 'm'));
 
 			if (!extractErrors) return { error: test };

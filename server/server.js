@@ -20,6 +20,8 @@ fastify.post('/score', async (request, reply) => {
 
 	return {
 		score: spamassassinResult.score,
+		required_score: spamassassinResult.required_score,
+		maximum_score: spamassassinResult.maximum_score,
 		is_spam: spamassassinResult.is_spam,
 		spamassassin: spamassassinResult
 	}
