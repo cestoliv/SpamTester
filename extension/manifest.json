@@ -1,6 +1,6 @@
 {
 	"manifest_version": 2,
-	"name": "Thunderbird Spam Tester",
+	"name": "Spam Tester",
 	"description": "",
 	"version": "1.0.0",
 	"author": "Olivier Cartier",

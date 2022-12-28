@@ -1,4 +1,10 @@
 {
+	"name": "spamtester",
+	"main": "server.js",
+	"repository": "https://git.chevro.fr/cestoliv/spamtester",
+	"author": "Olivier Cartier <me@cestoliv.com>",
+	"license": "MIT",
+
 	"scripts": {
 		"start": "node server.js",
 		"start:watch": "nodemon server.js"

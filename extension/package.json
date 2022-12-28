@@ -1,4 +1,8 @@
 {
+	"name": "spamtester-thunderbird",
+	"repository": "https://git.chevro.fr/cestoliv/spamtester",
+	"author": "Olivier Cartier <me@cestoliv.com>",
+	"license": "MIT",
 	"scripts": {
 		"build": "browserify src/popup.js -o src/build/popup.js",
 		"build:watch": "watchify src/popup.js -o src/build/popup.js -v"
