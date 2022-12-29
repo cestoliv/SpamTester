@@ -2,6 +2,8 @@ const fastify = require('fastify')({ logger: true })
 const cors = require('@fastify/cors')
 
 const spamassassin = require('./services/spamassassin')
+const rspamd = require('./services/rspamd')
+const { getScores } = require('./services/compute_results')
 
 fastify.register(cors, {
 	origin: true,
@@ -16,16 +18,7 @@ fastify.get('/', async (request, reply) => {
 fastify.post('/score', async (request, reply) => {
 	if (!request.body.raw) return { error: 'No raw email provided' }
 
-	const spamassassinResult = await spamassassin.getScore(request.body.raw)
-	if (spamassassinResult.error) return { error: spamassassinResult.error }
-
-	return {
-		score: spamassassinResult.score,
-		required_score: spamassassinResult.required_score,
-		maximum_score: spamassassinResult.maximum_score,
-		is_spam: spamassassinResult.is_spam,
-		spamassassin: spamassassinResult
-	}
+	return await getScores(request.body.raw)
 })
 
 // Run the server!

@@ -1,7 +1,7 @@
 FROM node:alpine
 
 # Install dependencies
-RUN apk add --no-cache spamassassin
+RUN apk add --no-cache spamassassin rspamd
 
 WORKDIR /spamtester
 COPY package.json package.json
@@ -15,6 +15,7 @@ COPY services ./services
 # Create startup script
 RUN echo '#!/bin/sh' > start.sh
 RUN echo 'spamd &' >> start.sh
+RUN echo 'rspamd --insecure' >> start.sh
 RUN echo 'npm run start' >> start.sh
 
 # Configure spamassassin

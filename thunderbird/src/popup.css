@@ -131,7 +131,8 @@ bold {
 
 #details-box > .details {
 	border-left: #65a2d7 2px solid;
-	padding: 15px 0 15px 15px;
+	padding: 5px 0 0 15px;
+	margin: 15px 0;
 }
 #details-box > .details .score {
 	font-size: 1em;

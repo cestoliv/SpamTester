@@ -84,6 +84,7 @@ async function retrieveScore() {
 	let score = { score: -1, is_spam: true }
 	try {
 		score = await retrieveScore()
+		console.log(score)
 	}
 	catch (e) {
 		// TODO: Display error
@@ -115,23 +116,24 @@ async function retrieveScore() {
 	else HTML_message.innerText = 'Your email will not be categorized as spam'
 
 	// Append details
-	let services = ['spamassassin']
-	services.forEach(serviceName => {
-		const service = score[serviceName]
-
-		let errors_html = '<table>'
-		for (let error of service.errors) {
-			errors_html += `<tr><td>${error.score}</td><td>${error.error}</td><td>${error.description}</td></tr>`
+	score.services.forEach(service => {
+		// Create errors table
+		let errors_html = ''
+		if (service.errors.length) {
+			errors_html = '<table>'
+			for (let error of service.errors) {
+				errors_html += `<tr><td>${error.score}</td><td>${error.error}</td><td>${error.description || ''}</td></tr>`
+			}
+			errors_html += '</table>'
 		}
-		errors_html += '</table>'
 
-
+		// Create details box
 		let details = document.createElement('div')
 		details.classList.add('details')
 		details.innerHTML = `
 			<div class="score-box">
 				<span class="score ${getScoreClass(service.score, service.required_score, service.maximum_score)}"><bold>${service.score}</bold> / ${service.maximum_score}</span>
-				<span class="name">${serviceName}</span>
+				<span class="name">${service.name}</span>
 			</div>
 			<div class="errors">
 				${errors_html}
