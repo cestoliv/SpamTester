@@ -17,6 +17,7 @@ fastify.post('/score', async (request, reply) => {
 	if (!request.body.raw) return { error: 'No raw email provided' }
 
 	const spamassassinResult = await spamassassin.getScore(request.body.raw)
+	if (spamassassinResult.error) return { error: spamassassinResult.error }
 
 	return {
 		score: spamassassinResult.score,

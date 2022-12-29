@@ -73,7 +73,15 @@ async function retrieveScore() {
 		score = await retrieveScore()
 	}
 	catch (e) {
+		// TODO: Display error
 		console.error(e)
+		return
+	}
+
+	if (score.error) {
+		// TODO: Display error
+		console.error(score.error)
+		return
 	}
 
 	// Hide loading box
