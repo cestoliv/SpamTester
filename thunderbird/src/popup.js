@@ -109,7 +109,7 @@ async function retrieveScore() {
 
 	// Display score
 	HTML_score.innerHTML = `<bold>${score.score}</bold> / 10`
-	HTML_score.classList.add(getScoreClass(score.score, score.required_score, score.maximum_score))
+	HTML_score.classList.add(getScoreClass(score.is_spam, score.score, score.required_score, score.maximum_score))
 
 	// Display message
 	if (score.is_spam) HTML_message.innerText = 'Your email may be categorized as spam'
@@ -136,7 +136,7 @@ async function retrieveScore() {
 		details.classList.add('details')
 		details.innerHTML = `
 			<div class="score-box">
-				<span class="score ${getScoreClass(service.score, service.required_score, service.maximum_score)}"><bold>${service.score}</bold> / ${service.maximum_score}</span>
+				<span class="score ${getScoreClass(service.is_spam, service.score, service.required_score, service.maximum_score)}"><bold>${service.score}</bold> / ${service.maximum_score}</span>
 				<span class="name">${service.name}</span>
 			</div>
 			<div class="errors">
@@ -160,7 +160,9 @@ HTML_show_details.addEventListener('click', () => {
 	HTML_show_details.classList.toggle('expanded')
 })
 
-function getScoreClass(score, required_score, maximum_score) {
+function getScoreClass(is_spam, score, required_score, maximum_score) {
+	// Return bad if the email is considered as spam
+	if (is_spam) return 'bad'
 	// Return good if the score is higher than 80% of the maximum score
 	if (score > maximum_score * (80/100) && score > required_score) return 'good'
 	// Return ok if the score is higher than the required score
