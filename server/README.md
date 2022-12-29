@@ -1,3 +1,4 @@
 # env vars
 PORT: (optionnal)
-SA_PATH: (optionnal) path for the spamassassin executable
+SA_HOST: (optionnal) spamassassin host, default to localhost
+SA_PORT: (optionnal) spamassassin port, default to 783
