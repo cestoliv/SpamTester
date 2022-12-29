@@ -9,10 +9,16 @@
 </head>
 <body>
 	<form>
-		<label class="server-label">Server</label>
-		<input type="text" id="server-input" placeholder="https://spamtester.chevro.fr">
-		<p>Leave blank to use the default server. You can enter the address of a self-hosted instance. <a href="https://git.chevro.fr/cestoliv/spamtester">See the instructions for hosting an instance.</a></p>
-		<button class="save-button" type="submit" id="save">Save</button>
+		<div class="section">
+			<input type="checkbox" id="hide-null-errors" name="hide-null-errors">
+			<label class="hide-null-errors-label" for="hide-null-errors">Hide errors with a null impact</label>
+		</div>
+
+		<div class="section">
+			<label class="server-label" for="server-input">Server</label>
+			<input type="text" id="server-input" name="server-input" placeholder="https://spamtester.chevro.fr">
+			<p><i>Leave blank to use the default server. You can enter the address of a self-hosted instance.</i> <a href="https://git.chevro.fr/cestoliv/spamtester">See the instructions for hosting an instance.</a></p>
+		</div>
 	</form>
 	<script type="text/javascript" src="options.js"></script>
 </body>

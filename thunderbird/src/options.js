@@ -1,16 +1,24 @@
-function saveOptions(e) {
-	browser.storage.sync.set({
-		server: document.getElementById("server-input").value
-	});
-	e.preventDefault();
-}
+HTML_server_input = document.getElementById("server-input");
+HTML_hide_null_errors = document.getElementById("hide-null-errors");
 
 function restoreOptions() {
-	let storageItem = browser.storage.sync.get('server');
+	let storageItem = browser.storage.sync.get(['server', 'hide_null_errors']);
 	storageItem.then((res) => {
-		document.getElementById("server-input").value = res.server;
+		HTML_server_input.value = res.server || 'https://spamtester.chevro.fr';
+		HTML_hide_null_errors.checked = res.hide_null_errors || true;
 	});
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-document.getElementById("save").addEventListener("click", saveOptions);
+
+HTML_hide_null_errors.addEventListener("change", (e) => {
+	browser.storage.sync.set({
+		hide_null_errors: HTML_hide_null_errors.checked
+	});
+});
+
+HTML_server_input.addEventListener("change", (e) => {
+	browser.storage.sync.set({
+		server: HTML_server_input.value
+	});
+});

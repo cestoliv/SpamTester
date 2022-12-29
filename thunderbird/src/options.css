@@ -9,7 +9,11 @@ a {
 	color: #45a1ff;
 }
 
-.server-label {
+p {
+	margin: 0;
+}
+
+label {
 	font-weight: bold;
 	font-size: 1em;
 	margin-right: 10px;
@@ -23,7 +27,7 @@ input {
 	border-radius: 5px;
 }
 
-button {
+/* button {
 	background: #45a1ff;
 	color: #fff;
 	padding: 5px 10px;
@@ -40,4 +44,8 @@ button:hover {
 
 .save-button {
 	margin-top: 10px;
+} */
+
+.section:not(:last-child) {
+	margin-bottom: 20px;
 }

@@ -69,7 +69,7 @@ async function retrieveScore() {
 
 	// send POST request
 	var instance_url = (await browser.storage.sync.get("server")).server
-	if (!instance_url) instance_url = "https://spamassassin.chevro.fr"
+	if (!instance_url) instance_url = "https://spamtester.chevro.fr"
 	return await fetch(`${instance_url}/score`, options)
 		.then(res => res.json())
 		.then(res => res)
@@ -116,12 +116,16 @@ async function retrieveScore() {
 	else HTML_message.innerText = 'Your email will not be categorized as spam'
 
 	// Append details
+	var hide_null_errors = (await browser.storage.sync.get("hide_null_errors")).hide_null_errors
+	if (hide_null_errors === undefined) hide_null_errors = true
+
 	score.services.forEach(service => {
 		// Create errors table
 		let errors_html = ''
 		if (service.errors.length) {
 			errors_html = '<table>'
 			for (let error of service.errors) {
+				if (hide_null_errors && error.score == 0) continue
 				errors_html += `<tr><td>${error.score}</td><td>${error.error}</td><td>${error.description || ''}</td></tr>`
 			}
 			errors_html += '</table>'
