@@ -11,7 +11,7 @@
 	}
 	},
 	"icons": {
-		"64": "img/icon.png"
+		"64": "img/logo.png"
 	},
 	"permissions": [
 		"compose",
@@ -20,7 +20,7 @@
 	"compose_action": {
 		"default_title": "SpamTest",
 		"default_popup": "src/popup.html",
-		"default_icon": "img/icon.png",
+		"default_icon": "img/logo.png",
 		"browser_style": true
 	},
 	"options_ui": {

@@ -9,6 +9,19 @@ function generateRandomAlphaNumericString(length) {
 	return string;
 }
 
+/*
+ * Add newline so the string is never longer than maxLength
+ */
+function addNewlines(str, maxLength = 79) {
+	let result = '';
+	let i = 0;
+	while (i < str.length) {
+	  result += str.substring(i, i + maxLength) + '\n';
+	  i += maxLength;
+	}
+	return result;
+}
+
 async function retrieveScore() {
 	const tabs = await browser.tabs.query({
 		active: true,
@@ -36,7 +49,7 @@ async function retrieveScore() {
 			const cid = generateRandomAlphaNumericString(10)
 			const filename = `${cid}.${match[1].split('/')[1]}`
 
-			msg.setAttachment(filename, match[1], match[0], { 'Content-ID': cid })
+			msg.setAttachment(filename, match[1], addNewlines(match[0], 72), { 'Content-ID': cid })
 
 			details.body = details.body.replace(match[0], `src="cid:${cid}"`)
 			match = details.body.match(base64Regex)
@@ -75,12 +88,14 @@ async function retrieveScore() {
 	catch (e) {
 		// TODO: Display error
 		console.error(e)
+		showError(e)
 		return
 	}
 
 	if (score.error) {
 		// TODO: Display error
 		console.error(score.error)
+		showError(score.error)
 		return
 	}
 
@@ -146,4 +161,9 @@ function getScoreClass(score, required_score, maximum_score) {
 	if (score > required_score) return 'ok'
 	// Return bad if the score is lower than the required score
 	return 'bad'
+}
+
+function showError(message) {
+	// TODO: Display error message
+	HTML_loading_box.getElementsByClassName("loading-icon")[0].style.fill = "#ff0000"
 }
