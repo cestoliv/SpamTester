@@ -1,5 +1,6 @@
 HTML_server_input = document.getElementById("server-input");
 HTML_hide_null_errors = document.getElementById("hide-null-errors");
+HTML_reset_button = document.getElementById("reset-button");
 
 function restoreOptions() {
 	let storageItem = browser.storage.sync.get(['server', 'hide_null_errors']);
@@ -21,4 +22,9 @@ HTML_server_input.addEventListener("change", (e) => {
 	browser.storage.sync.set({
 		server: HTML_server_input.value
 	});
+});
+
+HTML_reset_button.addEventListener("click", (e) => {
+	browser.storage.sync.clear();
+	restoreOptions();
 });

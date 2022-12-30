@@ -3,6 +3,7 @@ body {
 	color: #fff;
 	padding: 20px 5px;
 	min-height: 100vh;
+	user-select: text;
 }
 
 a {
@@ -27,6 +28,13 @@ input {
 	border-radius: 5px;
 }
 
+button[type="reset"] {
+	color: #45a1ff;
+	background: none;
+	border: none;
+	text-decoration: underline;
+}
+
 /* button {
 	background: #45a1ff;
 	color: #fff;
@@ -48,4 +56,8 @@ button:hover {
 
 .section:not(:last-child) {
 	margin-bottom: 20px;
+}
+
+#reset-button {
+	margin-top: 25px;
 }

@@ -84,7 +84,6 @@ async function retrieveScore() {
 	let score = { score: -1, is_spam: true }
 	try {
 		score = await retrieveScore()
-		console.log(score)
 	}
 	catch (e) {
 		// TODO: Display error
