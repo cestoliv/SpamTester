@@ -38,7 +38,10 @@ async function retrieveScore() {
 		msg.setTo(details.from)
 	if (details.cc.length) msg.setCc(details.cc)
 	if (details.bcc.length) msg.setBcc(details.bcc)
-	if (details.subject) msg.setSubject(details.subject)
+	if (details.subject)
+		msg.setSubject(details.subject)
+	else
+		msg.setSubject('No subject')
 	if (details.plainTextBody) msg.setMessage('text/plain', details.plainTextBody)
 
 	if (!details.isPlainText && details.body) {
