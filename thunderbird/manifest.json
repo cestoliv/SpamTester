@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Spam Tester",
 	"description": "",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Olivier Cartier",
 	"homepage_url": "https://git.chevro.fr/cestoliv/spamtester",
 	"applications": {
@@ -15,6 +15,7 @@
 		"64": "img/logo.png"
 	},
 	"permissions": [
+		"compose",
 		"storage"
 	],
 	"compose_action": {
