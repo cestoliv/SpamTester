@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "browserify src/popup.js -o src/build/popup.js",
-		"build:watch": "watchify src/popup.js -o src/build/popup.js -v"
+		"build:watch": "watchify src/popup.js -o src/build/popup.js -v",
+
+		"package": "npm run build && zip -r spamtester.xpi src/ img/ manifest.json"
 	},
 	"dependencies": {
 		"mimetext": "^2.0.10"

@@ -1,6 +1,7 @@
 # Thunderbird Extension
 thunderbird/node_modules
 thunderbird/src/build
+thunderbird/spamtester.xpi
 
 #Server
 server/node_modules
