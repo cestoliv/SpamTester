@@ -4,3 +4,4 @@ services:
     build: .
     ports:
       - 3060:3060
+    restart: always
