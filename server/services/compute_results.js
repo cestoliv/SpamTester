@@ -56,8 +56,6 @@ async function getScores(rawEmail) {
 	}
 	score = (scores_sum / services.length).toFixed(2)
 
-	console.log(score)
-
 	return {
 		score,
 		required_score,
